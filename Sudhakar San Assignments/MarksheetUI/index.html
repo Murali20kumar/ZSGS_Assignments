@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anna University – Grade Sheet (Template)</title>
+
+<style>
+  
+  :root{
+    --mint:#e6f4ef;        
+    --line:#8fb6a1;         
+    --ink:#1b3b2f;         
+    --grid:#84a2ed;         
+    --accent:#6d502a;     
+  }
+  @page { size: A4; margin: 10mm; }
+  html,body{ background:#d9f0de; }
+  body{ margin:0; color:var(--ink); font:13px/1.35 "Segoe UI", Roboto, Arial, sans-serif; }
+
+  .sheet{
+    width: 270mm; min-height: 267mm; margin: 10mm auto;
+    background: var(--mint);
+    border: 2px solid var(--line);
+    box-shadow: 0 1mm 4mm rgba(0,0,0,.08);
+    position: relative;
+  }
+
+  .sheet::before{
+     content: "";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: url("Anna University.png") no-repeat center center;
+  background-size: 180mm; 
+  opacity: 0.05;          
+  pointer-events: none;
+  }
+
+  /* ---------- Header ---------- */
+  .hdr{
+    display:grid;
+    grid-template-columns: 26mm 1fr 26mm;
+    align-items:center;
+    padding: 10mm 10mm 5mm;
+    gap: 6mm;
+  }
+  .logo{
+    width:30mm;height:30mm;
+    display:grid; place-items:center; border-radius:3mm;
+     font-size:10px; color:#6b8f80;
+  }
+  .logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+   }
+  .title{
+    text-align:center;
+  }
+  .title h1{
+    margin:0; font-size: 6mm; letter-spacing:.2mm; font-weight:700;
+  }
+  .title h2{
+    margin:.6mm 0 0; font-size: 4.3mm; font-weight:700;
+  }
+  .title .sub{
+    margin:.6mm 0 0; font-weight:700; font-size:4.2mm;
+  }
+
+  /* ---------- Top grid ---------- */
+  .meta{
+    margin: 2mm 10mm 0;
+    border: 1.2px solid var(--line);
+    background: rgba(255,255,255,.45);
+  }
+  .meta-row{
+    display:grid;
+    grid-template-columns: 36mm 1fr 26mm 1fr 28mm 1fr;
+    border-bottom:1px solid var(--grid);
+  }
+  .meta-row:last-child{ border-bottom:0; }
+  .cell{
+    padding: 3mm 3.5mm; border-right:1px solid var(--grid);
+  }
+  .meta-row .cell:nth-last-child(1){ border-right:0; }
+  .lbl{ font-weight:700; text-transform:uppercase; font-size: 11px; color:#355c4a; }
+  .val{ margin-top:1.2mm; }
+
+  /* single full-width label rows */
+  .meta-row.full{ grid-template-columns: 36mm 1fr; }
+
+  /* ---------- Courses Table ---------- */
+  .tbl{
+    margin: 6mm 10mm 8mm; width: calc(100% - 20mm);
+    border:1.2px solid var(--line); border-collapse: collapse;
+    background:#fff;
+  }
+  .tbl th, .tbl td{
+    border:1px solid var(--grid); padding: 3mm 2.5mm; text-align:left;
+  }
+  .tbl thead th{
+    background:#eef7f2; color:#214a3b; font-weight:700; font-size: 12px;
+  }
+  .tbl .narrow{ width: 14mm; text-align:center; }
+  .tbl .code{ width: 26mm; font-family: "Consolas", "Courier New", monospace; }
+  .tbl .credits, .tbl .ltr, .tbl .gpt{ width: 16mm; text-align:center; }
+  .tbl .result{ width: 20mm; text-align:center; }
+
+  .center{ text-align:center; }
+
+  .sum{
+    margin: 2mm 10mm 0;
+    border:1.2px solid var(--line);
+    background: rgba(255,255,255,.65);
+  }
+  .sum-head{
+    display:grid; grid-template-columns: repeat(11, 1fr);
+    border-bottom:1px solid var(--grid);font-weight:600;
+  }
+  .sum-row{
+    display:grid; grid-template-columns: repeat(11, 1fr);
+    border-bottom:1px solid var(--grid);
+  }
+  .sum-row:last-child{ border-bottom:0; }
+  .sum .cell{
+    padding: 2.5mm; border-right:1px solid var(--grid); text-align:center;
+  }
+  .sum .cell:last-child{ border-right:0; }
+  .sum .lbl{ font-weight:700; color:#214a3b; text-transform:none; }
+
+
+  .footer{
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap: 10mm; margin: 10mm; align-items:end;
+  }
+  .seal{
+    border:1.2px dashed var(--line);
+    height: 30mm; display:grid; place-items:center; background:#fff;
+    color:#6b8f80; font-weight:600;
+  }
+  .sign{
+    text-align:right;
+  }
+  .sign .line{
+    height:1px; background:var(--ink); margin: 14mm 0 2mm;
+  }
+  .muted{ color:#5e7b6e; font-size:11px; }
+
+  .caption{
+    text-align:center; margin: 5mm 10mm 2mm; color:#335b4a; font-weight:600;
+  }
+  .note{
+    margin: 2mm 10mm; text-align:center; color:#56796a;
+    font-style:italic;
+  }
+  @media print{
+    html,body{ background:#fff; }
+    .sheet{ box-shadow:none; margin:0; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="sheet">
+    <!-- HEADER -->
+    <div class="hdr">
+      <div class="logo">
+        <img src="Anna University.png" alt="University Logo">
+      </div>
+      <div class="title">
+        <h1>ANNA UNIVERSITY, CHENNAI - 25</h1>
+        <h2>B.E. DEGREE EXAMINATIONS</h2>
+        <div class="sub">GRADE SHEET</div>
+      </div>
+      <div class="logo">
+         <img src="Profile.jpeg" alt="Student Photo">
+      </div>
+    </div>
+
+    <div class="meta">
+      <div class="meta-row">
+        <div class="cell">
+          <div class="lbl">Sl. No</div>
+          <div class="val">MA 4358438</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Folio No.</div>
+          <div class="val">AU02625271</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Register No</div>
+          <div class="val">951819104015</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Date of Publication</div>
+          <div class="val">05-AUG-2020</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Regulations</div>
+          <div class="val">2017 (CBCS)</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Month & Year of Exam</div>
+          <div class="val">APR 2020</div>
+        </div>
+      </div>
+
+      <div class="meta-row full">
+        <div class="cell">
+          <div class="lbl">Name of the Candidate</div>
+        </div>
+        <div class="cell">
+          <div class="val">MURALI KUMAR P</div>
+        </div>
+      </div>
+
+      <div class="meta-row">
+        <div class="cell">
+          <div class="lbl">Date of Birth</div>
+          <div class="val">26-NOV-2002</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Gender</div>
+          <div class="val">MALE</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">College of Study</div>
+          <div class="val">NELLAI COLLEGE OF ENGINEERING</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Programme & Branch</div>
+          <div class="val">B.E. Computer Science and Engineering</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Semester</div>
+          <div class="val">02</div>
+        </div>
+        <div class="cell">
+          <div class="lbl">Medium</div>
+          <div class="val">ENGLISH</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="caption">COURSE DETAILS</div>
+
+    <!-- MAIN COURSES TABLE (EDIT ROWS) -->
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th class="narrow">SEM.</th>
+          <th class="code">COURSE CODE</th>
+          <th>COURSE TITLE</th>
+          <th class="credits">CREDITS</th>
+          <th class="ltr">LETTER GRADE</th>
+          <th class="gpt">GRADE POINT</th>
+          <th class="result">RESULT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="center">02</td>
+          <td class="code">BEB255</td>
+          <td>Basic Electrical, Electronics and Measurement Engineering</td>
+          <td class="credits">3</td>
+          <td class="ltr">A</td>
+          <td class="gpt">8</td>
+          <td class="result">PASS</td>
+        </tr>
+        <tr>
+          <td class="center">02</td>
+          <td class="code">CS8251</td>
+          <td>Programming in C</td>
+          <td class="credits">3</td>
+          <td class="ltr">A</td>
+          <td class="gpt">8</td>
+          <td class="result">PASS</td>
+        </tr>
+        <tr>
+          <td class="center">02</td>
+          <td class="code">CS8261</td>
+          <td>C Programming Laboratory</td>
+          <td class="credits">2</td>
+          <td class="ltr">A+</td>
+          <td class="gpt">9</td>
+          <td class="result">PASS</td>
+        </tr>
+        <tr>
+          <td class="center">02</td>
+          <td class="code">GE8261</td>
+          <td>Engineering Practices Laboratory</td>
+          <td class="credits">2</td>
+          <td class="ltr">A+</td>
+          <td class="gpt">9</td>
+          <td class="result">PASS</td>
+        </tr>
+        <tr>
+          <td class="center">02</td>
+          <td class="code">GE8291</td>
+          <td>Environmental Science and Engineering</td>
+          <td class="credits">3</td>
+          <td class="ltr">B+</td>
+          <td class="gpt">7</td>
+          <td class="result">PASS</td>
+        </tr>
+        <tr>
+          <td class="center">02</td>
+          <td class="code">HS8251</td>
+          <td>Technical English</td>
+          <td class="credits">4</td>
+          <td class="ltr">A</td>
+          <td class="gpt">8</td>
+          <td class="result">PASS</td>
+        </tr>
+        <tr>
+          <td class="center">02</td>
+          <td class="code">MA8251</td>
+          <td>Engineering Mathematics - II</td>
+          <td class="credits">4</td>
+          <td class="ltr">A</td>
+          <td class="gpt">8</td>
+          <td class="result">PASS</td>
+        </tr>
+        <tr>
+          <td class="center">02</td>
+          <td class="code">PH8252</td>
+          <td>Physics for Information Science</td>
+          <td class="credits">3</td>
+          <td class="ltr">A</td>
+          <td class="gpt">8</td>
+          <td class="result">PASS</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note"></div>
+
+    <!-- SUMMARY TABLE -->
+    <div class="sum">
+      <div class="sum-head">
+        <div class="cell lbl">Semester</div>
+        <div class="cell">I</div><div class="cell">II</div><div class="cell">III</div><div class="cell">IV</div>
+        <div class="cell">V</div><div class="cell">VI</div><div class="cell">VII</div><div class="cell">VIII</div>
+        <div class="cell">IX</div><div class="cell">X</div>
+      </div>
+      <div class="sum-row">
+        <div class="cell lbl">Credits Registered</div>
+        <div class="cell">—</div><div class="cell">24</div><div class="cell">—</div><div class="cell">—</div>
+        <div class="cell">—</div><div class="cell">—</div><div class="cell">—</div><div class="cell">—</div>
+        <div class="cell">—</div><div class="cell">—</div>
+      </div>
+      <div class="sum-row">
+        <div class="cell lbl">Credits Earned</div>
+        <div class="cell">—</div><div class="cell">24</div><div class="cell">—</div><div class="cell">—</div>
+        <div class="cell">—</div><div class="cell">—</div><div class="cell">—</div><div class="cell">—</div>
+        <div class="cell">—</div><div class="cell">—</div>
+      </div>
+      <div class="sum-row">
+        <div class="cell lbl">Grade Points Earned</div>
+        <div class="cell">—</div><div class="cell">64</div><div class="cell">—</div><div class="cell">—</div>
+        <div class="cell">—</div><div class="cell">—</div><div class="cell">—</div><div class="cell">—</div>
+        <div class="cell">—</div><div class="cell">—</div>
+      </div>
+      <div class="sum-row">
+        <div class="cell lbl">Grade Point Average (GPA)</div>
+        <div class="cell">—</div><div class="cell">7.833</div><div class="cell">—</div><div class="cell">—</div>
+        <div class="cell">—</div><div class="cell">—</div><div class="cell">—</div><div class="cell">—</div>
+        <div class="cell">—</div><div class="cell">—</div>
+      </div>
+      <div class="sum-row">
+        <div class="cell lbl">Cumulative Credits Earned</div>
+        <div class="cell" style="grid-column: span 10;">36</div>
+      </div>
+      <div class="sum-row">
+        <div class="cell lbl">Cumulative Grade Point Average (CGPA)</div>
+        <div class="cell" style="grid-column: span 10;">7.61</div>
+      </div>
+      <div class="sum-row">
+        <div class="cell lbl">Medium of Instruction</div>
+        <div class="cell" style="grid-column: span 10;">ENGLISH</div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div>
+        <!-- <div class="seal">OFFICIAL SEAL / STAMP</div> -->
+        <div class="muted" style="margin-top:4mm;">Chennai : 600 025</div><br>
+        <div class="muted" style="margin-top:4mm;">Date : 09-12-2020</div>
+      </div>
+      <div class="sign">
+        <div class="line"></div>
+        <div>CONTROLLER OF EXAMINATIONS</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
