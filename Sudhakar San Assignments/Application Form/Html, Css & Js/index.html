@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application Form</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  /* Poppins */
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  /* Montserrat */
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background-doodles"></div>
+  <div class="form-container">
+    <h1><i class="fa-solid fa-file-pen"></i> Application Form</h1>
+    <form id="appForm">
+      <div class="input-group">
+        <label><i class="fa-solid fa-user"></i> Full Name<span style="color: red;">*</span></label>
+        <input type="text" name="fullname" placeholder="Enter your full name" required />
+      </div>
+
+      <div class="input-group">
+        <label><i class="fa-solid fa-envelope"></i> Email<span style="color: red;">*</span></label>
+        <input type="email" name="email" placeholder="Enter your email" required />
+      </div>
+
+      <div class="input-group">
+        <label><i class="fa-solid fa-lock"></i> Password<span style="color: red;">*</span></label>
+        <input type="password" name="password" placeholder="Enter a secure password" required />
+      </div>
+
+      <div class="input-group">
+        <label><i class="fa-solid fa-hashtag"></i> Age<span style="color: red;">*</span></label>
+        <input type="number" name="age" placeholder="Enter your age" />
+      </div>
+
+      <div class="input-group">
+        <label><i class="fa-solid fa-venus-mars"></i> Gender</label>
+        <div class="radio-group">
+          <input type="radio" name="gender" value="Male" /> Male
+          <input type="radio" name="gender" value="Female" /> Female
+          <input type="radio" name="gender" value="Other" /> Other
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label><i class="fa-solid fa-code"></i> Skills<span style="color: red;">*</span></label>
+        <div class="checkbox-group">
+          <input type="checkbox" name="skills" value="HTML" /> HTML
+          <input type="checkbox" name="skills" value="CSS" /> CSS
+          <input type="checkbox" name="skills" value="JavaScript" /> JavaScript
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label><i class="fa-solid fa-building"></i> Department<span style="color: red;">*</span></label>
+        <select name="department">
+          <option value="">Select Department</option>
+          <option value="Engineering">Engineering</option>
+          <option value="Design">Design</option>
+          <option value="Marketing">Marketing</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label><i class="fa-solid fa-file"></i> Resume</label>
+        <input type="file" name="resume" />
+      </div>
+
+      <div class="input-group">
+        <label><i class="fa-solid fa-pen"></i> About You</label>
+        <textarea name="about" placeholder="Tell us about yourself..."></textarea>
+      </div>
+
+      <button type="submit"><i class="fa-solid fa-paper-plane"></i> Submit</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(90deg, #8a2be2, #ba55d3, #dda0dd);
+  min-height: 100vh;
+  display: block; /* allow natural flow + scrolling */
+  position: relative;
+  overflow-x: hidden;
+}
+
+.background-doodles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); */
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.form-container {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 500px;
+  margin: 40px auto;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s ease ;
+}
+
+.form-container:hover{
+  transform: scale(1.02);
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #5a2d82;
+  font-size: 26px;
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+ transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #a26ad9;
+  box-shadow: 0 0 0 3px rgba(162,106,217,0.2);
+  outline: none;
+}
+
+input:hover, select:hover, textarea:hover {
+  transform: scale(1.02);
+}
+
+.radio-group, .checkbox-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #8a2be2, #ba55d3, #dda0dd);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #6a1bb2, #9932cc, #c57ed8);
+  transform: scale(1.02);
+}
+
+textarea {
+  resize: none;
+  min-height: 90px;
+}
